@@ -1,7 +1,4 @@
 """Modelos de la aplicación Medidores."""
-# Python
-import uuid
-
 # Django
 from django.db import models
 from django.core.validators import MinValueValidator, RegexValidator
@@ -10,6 +7,7 @@ alphanumeric = RegexValidator(
     r'^[0-9a-zA-Z]*$', 
     'Only alphanumeric characters are allowed.'
 )
+
 
 class Medidor(models.Model):
     """ Modelo que representa un medidor."""
@@ -23,6 +21,7 @@ class Medidor(models.Model):
         blank=False,
         null=False,
     )
+
 
 class Medicion(models.Model):
     """ Modelo que representa la medición registrada en kwh de un medidor."""
