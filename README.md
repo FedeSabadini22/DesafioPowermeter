@@ -1,7 +1,9 @@
 # Desafío Powermeter
+
 ## Desafío Django Dev
 
 ### Ejercicio 1
+
 Armar una API REST en Django con integración con Django Rest Framework que guarde las mediciones
 de consumo de energía de los distintos medidores en una base de datos relacional.
 De los medidores nos interesa conocer su llave identificadora (código alfanumérico único) y nombre.
@@ -26,6 +28,7 @@ específico.
 Se deben documentar los endpoints con la información necesaria para poder probar y testear su
 funcionamiento. La solución debe ser de fácil de replicar y desplegar.
 Consideraciones
+
 - Debe estar subido a Github
 - Opcionalmente se puede dockerizar la solución.
 - Usar sqlite
@@ -34,13 +37,21 @@ Además del código mándanos un texto explicando alguna decisión de diseño pa
 tomado y qué simplificaciones hiciste por ser un ejemplo de prueba.
 
 ### Ejercicio 2
+
 Partiendo del siguiente código y utilizando la menor cantidad de líneas, resuelva los siguientes puntos:
 import json
 repetidos = [1,2,3,"1","2","3",3,4,5]
 r = [1,"5",2,"3"]
 d_str = '{"valor":125.3,"codigo":123}'
+
 1. Genere una lista con los valores no repetidos de la lista ‘repetidos’.
 2. Genere una lista con los valores en común entre la lista ‘r’ y ‘repetidos’
 3. Transforme ‘d_str’ en un diccionario.
 
 Este ejercicio puede resolverse en una script independiente del ejercicio 1.
+
+### Considereciones acerca del Ejercicio 1
+
+Para la solución del problema decidí implementar dos modelos *Medidor*  y *Medicion* relacionados entre sí mediante una ForeignKey, con las respectivas características requeridas en el enunciado. Con los modelos definidos, procedí a definir los __serializers__ y los distintos __endpoints__ de la API. Para el alta de medidores, y registro de mediciones utilicé __Generic views__ junto con __Mixins__ porque era lo más práctico de utilizar dado que no se requerían condiciones específicas y lo que ofrece por default DRF era suficiente. Por otro lado, para los cuatro endpoints  de datos específicos de los medidores, si me parecio mejor utilizar el enfoque propuesto en la documentación de DRF de __APIView__ que es más flexible para customizar las consultas.
+
+Con respecto a simplificaciones, seguramente con más tiempo hubiera profundizado mas en validación de las consultas, permisos de consulta, estaría en falta los tests y también seguramente hay código que se puede refactorizar.
