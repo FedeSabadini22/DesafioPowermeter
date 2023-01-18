@@ -16,4 +16,8 @@ router.register('mediciones', MedicionListViewSet, 'mediciones')
 urlpatterns = []
 urlpatterns.extend([
     path('api/', include(router.urls)),
+    path('api/medidores/<id>/consumo_maximo',  ConsumoMaximo.as_view()),
+    path('api/medidores/<id>/consumo_minimo',  ConsumoMinimo.as_view()),
+    path('api/medidores/<id>/consumo_total',  ConsumoTotal.as_view()),
+    path('api/medidores/<id>/consumo_promedio',  ConsumoPromedio.as_view()),
 ])
