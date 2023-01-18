@@ -29,7 +29,8 @@ class Medicion(models.Model):
         Medidor,
         blank=False,
         null=False,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        related_name='mediciones'
     )
     fecha_hora = models.DateTimeField(auto_now_add=True)
     consumo = models.DecimalField(
